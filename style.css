@@ -5,33 +5,37 @@
     box-sizing: border-box;
 }
 
-/* FONDO */
+/* BODY */
 body {
     font-family: Arial, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     background: url("cumple.jpg") no-repeat center/cover;
+
+    padding: 20px; /* 👈 evita que se pegue en celular */
 }
 
 /* ESCENA */
 .scene {
     position: relative;
     width: 100%;
-    height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* TARJETA */
+/* TARJETA RESPONSIVA REAL */
 .card {
-    width: 400px;
-    height: 250px;
+    width: 90vw;             /* se adapta al celular */
+    max-width: 400px;
+
+    aspect-ratio: 1.6 / 1;   /* mantiene proporción SIEMPRE */
+
     border-radius: 15px;
     overflow: hidden;
     position: relative;
@@ -60,15 +64,16 @@ body {
     100% { left: 200%; }
 }
 
-/* RASCABLE */
+/* RASCABLE RESPONSIVO */
 .scratch-container {
     position: absolute;
-    bottom: 20px;
+
+    bottom: 8%;              /* relativo a la tarjeta */
     left: 50%;
     transform: translateX(-50%);
 
-    width: 180px;
-    height: 55px;
+    width: 45%;              /* escala con la tarjeta */
+    height: 22%;
 }
 
 /* CÓDIGO */
@@ -87,7 +92,7 @@ body {
 
     color: black;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 0.9em;
 }
 
 /* BOTÓN */
@@ -98,7 +103,7 @@ body {
     padding: 4px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.7em;
 }
 
 #copyBtn:hover {
@@ -112,6 +117,8 @@ body {
     height: 100%;
     border-radius: 8px;
     cursor: pointer;
+
+    touch-action: none; /* 👈 clave para celular */
 }
 
 /* GIFS */
@@ -132,6 +139,13 @@ body {
     right: 5%;
     top: 50%;
     transform: translateY(-50%);
+}
+
+/* OCULTAR GIFS EN CELULAR */
+@media (max-width: 768px) {
+    .gif {
+        display: none;
+    }
 }
 
 /* CONFETI */
